@@ -25,7 +25,7 @@ while [ $DONE -eq 0 ]; do
   fi
 done
 
-sudo echo "${IP}    ${PROJECT_HOSTNAME}" | sudo tee --append $HOSTS_PATH > /dev/null
+echo "${IP}    ${PROJECT_HOSTNAME}" | sudo tee --append $HOSTS_PATH > /dev/null
 
 sed -i "s/192.168.10.10/${IP}/g" ./Homestead.yaml
 sed -i "s/homestead.app/${PROJECT_HOSTNAME}/g" ./Homestead.yaml
