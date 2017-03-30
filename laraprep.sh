@@ -25,10 +25,10 @@ while [ $DONE -eq 0 ]; do
   fi
 done
 
-echo "${IP}    ${PROJECT_HOSTNAME}" | sudo tee --append $HOSTS_PATH > /dev/null
+echo "${IP}    ${PROJECT_HOSTNAME}" | sudo tee -a $HOSTS_PATH > /dev/null
 
-sed -i "s/192.168.10.10/${IP}/g" ./Homestead.yaml
-sed -i "s/homestead.app/${PROJECT_HOSTNAME}/g" ./Homestead.yaml
+sed -i.bak "s/192.168.10.10/${IP}/g" ./Homestead.yaml
+sed -i.bak "s/homestead.app/${PROJECT_HOSTNAME}/g" ./Homestead.yaml
 
 vagrant up
 vagrant ssh -- -t 'composer create-project laravel/laravel Code/Project && exit; /bin/bash'
