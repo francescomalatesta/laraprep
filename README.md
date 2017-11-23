@@ -4,6 +4,17 @@ A really simple script for a really lazy developer, to get a new Laravel project
 
 ## How Does it Work?
 
+### Docker
+
+Here's what happens if you type `./laraprep.sh test --docker`:
+
+* **creates a new Laravel project**, using docker CLI commands;
+* **configures the hosts file accordingly**, by linking localhost to the `test.dev` hostname;
+* **configures Vessel** to use Docker for the development environment;
+* **starts all the containers** with ./vessel start;
+
+### Vagrant
+
 Here's what happens if you type `./laraprep.sh test`:
 
 * **creates a new vagrant machine**, using Laravel Homestead Improved;
