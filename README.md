@@ -4,24 +4,14 @@ A really simple script for a really lazy developer, to get a new Laravel project
 
 ## How Does it Work?
 
-If you type `./laraprep.sh test`, Laraprep:
+If you type `./laraprep.sh myapp`, Laraprep:
 
 * **creates a new Laravel project**, using docker CLI commands;
-* **configures the hosts file accordingly**, by linking localhost to the `test.dev` hostname;
+* **configures the hosts file accordingly**, by linking localhost to the `myapp.test` hostname;
 * **configures Vessel** to use Docker for the development environment;
 * **starts all the containers** with ./vessel start;
 
-You're ready to rock! You can reach your project by typing `test.dev` in your browser.
-
-## Custom Project
-
-If you want to install another Laravel-based project and not the plain `laravel/laravel`, use the `--project` option. Here's an example with [one of my projects](https://github.com/francescomalatesta/laravel-api-boilerplate-jwt):
-
-`./laraprep.sh --project=francescomalatesta/laravel-api-boilerplate-jwt boilerplate`
-
-With the above command LaraPrep will install the `francescomalatesta/laravel-api-boilerplate-jwt` repository under the `boilerplate` folder, with everything set up to start.
-
-**Important:** use the `--project` option BEFORE the folder name, not after.
+You're ready to rock! You can reach your project by typing `myapp.test` in your browser.
 
 ## How can I use the Docker environment?
 
