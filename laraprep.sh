@@ -1,5 +1,7 @@
+#!/usr/bin/env bash
+
 # LaraPrep, a simple script for a lazy developer.
-# Wrote by Francesco Malatesta - Dec 10, 2016 - Last Update Nov 23, 2017
+# Wrote by Francesco Malatesta - Dec 10, 2016 - Last Update Oct 27, 2018
 
 function docker_prep {
   # export current user id
@@ -11,7 +13,7 @@ function docker_prep {
   docker run -u $USER_ID --rm -it \
       -v $(pwd):/opt \
       -w /opt shippingdocker/php-composer:latest \
-      composer create-project $1 $PROJECT_NAME
+      composer create-project laravel/laravel $PROJECT_NAME
 
   docker run -u $USER_ID --rm -it \
       -v $(pwd):/opt \
@@ -31,31 +33,10 @@ function docker_prep {
   printf "\nConfigured ${PROJECT_HOSTNAME}! Have fun :)\n"
 }
 
-PARSED_OPTIONS=$(getopt -n "$0"  -o p: --long "project:"  -- "$@")
-REPO_NAME="laravel/laravel"
-
 if [ $? -ne 0 ];
 then
   exit 1
 fi
-
-eval set -- "$PARSED_OPTIONS"
-
-while true;
-do
-  case "$1" in
-    -p|--project)
-      if [ -n "$2" ];
-      then
-        REPO_NAME="$2"
-      fi
-      shift 2;;
-
-    --)
-      shift
-      break;;
-  esac
-done
 
 if [ -z "$1" ]
   then
@@ -64,7 +45,7 @@ if [ -z "$1" ]
 fi
 
 PROJECT_NAME="$1"
-PROJECT_HOSTNAME="$1.dev"
+PROJECT_HOSTNAME="$1.test"
 HOSTS_PATH="/etc/hosts"
 
-docker_prep "$REPO_NAME"
+docker_prep
